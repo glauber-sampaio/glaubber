@@ -1098,17 +1098,10 @@ p {
 #content .share-cover-elements .clean-button {
   top: 50%;
   left: 200px;
+  cursor: default;
 }
 
-/* line 268, ../sass/modules/_global.scss */
-
-#content .share-cover-elements .clean-button:hover {
-  -ms-transform: translate3d(10px, 0, 0);
-  transform: translate3d(10px, 0, 0);
-  -webkit-transform: translate3d(10px, 0, 0);
-}
-
-/* line 274, ../sass/modules/_global.scss */
+/* line 271, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-wrapper {
   width: 800px;
@@ -1121,14 +1114,14 @@ p {
   background: black;
 }
 
-/* line 281, ../sass/modules/_global.scss */
+/* line 278, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-wrapper canvas {
   position: relative;
   opacity: 1;
 }
 
-/* line 288, ../sass/modules/_global.scss */
+/* line 285, ../sass/modules/_global.scss */
 
 #content .share-cover-elements #share-cover-bg {
   display: none;
