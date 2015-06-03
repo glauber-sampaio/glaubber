@@ -1,0 +1,294 @@
+body {
+	background: black;
+}
+
+* { @include unselectable; }
+p { cursor: default; }
+
+#content {
+	width: 100%;
+	height: 100vh;
+	font-family: 'helv';
+	color: white;
+	font-size: 14px;
+	line-height: 15px;
+	overflow: hidden;
+
+	a { color: white; }
+	a:hover { color: darken(white, 40%); }
+	
+	.ui {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+
+		.logo {
+			width: 167px;
+			height: 23px;
+			background: url(../images/brand.png) no-repeat 0 0;
+			position: absolute;
+			top: 50px; left: 50px;
+		}
+		.download{
+			width: 100px;
+			height: 60px;
+			position: absolute;
+			top: 50%; left: 50px;
+			margin-top: -30px;
+			z-index: 1;
+			
+			.download-wrp {
+				width: 100%;
+				height: 100%;
+				position: relative;
+
+				.full {
+					width: 100%; height: 100%;
+					position: absolute; top: 0; left: 0;
+					z-index: 2;
+				}
+
+				p {
+					width: 100%;
+					display: block;
+					@include expo;
+
+					span {
+						color: darken(white, 40%);
+					}	
+				}
+			}
+
+			&:hover {
+				.download-wrp {
+					p:nth-child(2) {
+						transform: translate3d(30px, 0, 0);
+						-webkit-transform: translate3d(30px, 0, 0);
+					}
+					p:nth-child(3) {
+						transform: translate3d(25px, 0, 0);
+						-webkit-transform: translate3d(25px, 0, 0);
+					}
+					p:nth-child(4) {
+						transform: translate3d(20px, 0, 0);
+						-webkit-transform: translate3d(20px, 0, 0);
+					}
+					p:nth-child(5) {
+						transform: translate3d(10px, 0, 0);
+						-webkit-transform: translate3d(10px, 0, 0);
+					}
+				}
+			}
+
+		}
+
+		.share-cover {
+			width: 110px;
+			height: 35px;
+			position: absolute;
+			top: 50%; right: 50px;
+			margin-top: -(35px / 2);
+			cursor: pointer;
+
+			.sc-wrp {
+				width: 100%;
+				height: 100%;
+
+				p {
+					width: 100%;
+					display: block;
+					@include expo;
+					text-align: right;
+
+					span {
+						color: darken(white, 40%);
+					}	
+				}
+			}
+
+			&:hover {
+				.sc-wrp {
+					p:nth-child(1) {
+						transform: translate3d(-20px, 0, 0);
+						-webkit-transform: translate3d(-20px, 0, 0);
+					}
+
+					p:nth-child(2) {
+						transform: translate3d(-10px, 0, 0);
+						-webkit-transform: translate3d(-10px, 0, 0);
+					}
+				}
+			}
+
+		}
+
+		nav {
+			@extend %widthauto;
+			position: absolute;
+			bottom: 50px; left: 50px;
+			z-index: 1;
+
+			ul li {
+				@include expo;
+
+				&:hover {
+					padding: 10px 0;
+				}
+
+			}
+		}
+		
+		.sound-button {
+			width: 14px;
+			height: 14px;
+			background: url(../images/icon-sound.png) no-repeat 0 0;
+			position: absolute;
+			top: 50px; right: 50px;
+			z-index: 1;
+			cursor: pointer;
+
+			&.paused {
+				opacity: 0.6;
+			}
+
+		}
+
+	}
+
+	.cover-art {
+		width: 100%;
+		height: 100vh;
+		z-index: 0;
+		overflow: hidden;
+		
+		.lettering {
+			width: 930px;
+			height: 270px;
+			position: absolute;
+			@include centerObj(930, 270);
+			z-index: 1;
+
+			.lettering-wrp {
+				width: 100%;
+				height: 100%;
+				position: relative;
+
+				#title {
+					transform: scale(4);
+					-webkit-transform: scale(4);
+					position: absolute;
+					top: 126px; left: 348px;
+
+					path {
+						stroke: white;
+						stroke-width: 3.8px;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+						stroke-dasharray: 300px;
+						stroke-dashoffset: 300px;
+					}
+				}
+				.ep-sign {
+					width: 42px;
+					height: 28px;
+					font-size: 32px;
+					line-height: 35px;
+					position: absolute;
+					top: 30px; right: 30px;
+					opacity: 0;
+				}
+			}
+		}
+
+		.circle {
+			width: 1163px;
+			height: 1163px;
+			background: url(../images/circ-bg.png) no-repeat 0 0;
+			position: absolute;
+			@include centerObj(1163, 1163);
+			opacity: 0;
+		}
+
+	}
+
+	.share-cover-elements {
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
+		position: absolute;
+		top: 0; left: 0;
+		display: none;
+		perspective: 1000px;
+		
+		* { 
+			opacity: 0;
+			@include expo;
+		}
+	
+		.logo-black {
+			width: 167px;
+			height: 23px;
+			background: url(../images/brand-black.png) no-repeat 0 0;
+			position: absolute;
+			top: 50px; left: 50px;
+			z-index: 1;
+		}
+
+		.close-button,
+		.clean-button,
+		.share-button {
+			@extend %widthauto;
+			position: absolute;
+			color: black;
+			height: 15px;
+			cursor: pointer;
+			z-index: 1;
+		}
+
+		.close-button {
+			top: 50px; right: 50px;
+			&:hover {
+				transform: translate3d(-10px, 0, 0);
+				-webkit-transform: translate3d(-10px, 0, 0);
+			}
+		}
+
+		.share-button {
+			top: 50%; right: 200px;
+			&:hover {
+				transform: translate3d(-10px, 0, 0);
+				-webkit-transform: translate3d(-10px, 0, 0);
+			}
+		}
+
+		.clean-button {
+			top: 50%; left: 200px;
+			&:hover {
+				transform: translate3d(10px, 0, 0);
+				-webkit-transform: translate3d(10px, 0, 0);
+			}
+		}
+		
+		.canvas-wrapper {
+			width: 800px;
+			height: 800px;
+			position: absolute;
+			@include centerObj(800, 800);
+			background: black;
+			
+			canvas {
+				position: relative;
+				opacity: 1;
+			}
+		
+		}
+
+		#share-cover-bg { display: none; }
+
+
+	}
+
+
+}

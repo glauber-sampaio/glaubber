@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creating A Page Reveal With Paper.js</title>
+ 
+    <style type="text/css">
+
+        h1 {
+            font-size: 80px ;
+            }
+
+        #canvas {
+            height: 100% ;
+            left: 0px ;
+            position: fixed ;
+            top: 0px ;
+            width: 100% ;
+            z-index: 100 ;
+            }
+
+        #percentLabel {
+            background-color: #333333 ;
+            border-radius: 25px 25px 25px 25px ;
+            -moz-border-radius: 25px 25px 25px 25px ;
+            color: #FFFFFF ;
+            font-size: 14px ;
+            height: 55px ;
+            left: 50% ;
+            line-height: 58px ;
+            margin: -23px 0px 0px -23px ;
+            position: fixed ;
+            text-align: center ;
+            top: 50% ;
+            width: 55px ;
+            z-index: 200 ;
+            }
+
+    </style>
+ 
+    <!-- Include the jQuery script. -->
+    <script type="text/javascript" src="./jquery-1.6.1.js"></script>
+ 
+    <!-- Include the Paper.js script. -->
+    <script type="text/javascript" src="./paper.js"></script>
+</head>
+<body>
+ 
+    <h1>
+        Here Is A Title
+    </h1>
+ 
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Suspendisse hendrerit lacinia arcu sit amet adipiscing.
+        Vestibulum faucibus convallis pellentesque. Aliquam
+        accumsan nibh in dolor rhoncus vitae cursus sem accumsan.
+        Quisque dignissim erat ac metus rutrum fermentum. Vestibulum
+        volutpat, nibh in tincidunt sagittis, est felis pharetra
+        lorem, eget venenatis felis magna at metus. Phasellus porta
+        tempus convallis. Nunc luctus, nisl id venenatis facilisis,
+        lorem arcu ultrices tortor, ac scelerisque augue massa in
+        metus. Mauris sem ante, sodales vitae malesuada sed,
+        malesuada sed nibh. Aenean viverra tristique dolor, vel
+        vulputate massa tempor nec. In tempus nisl nec dolor lacinia
+        in tempus risus ullamcorper. Phasellus lorem nisl, tincidunt
+        non euismod ut, aliquet nec ligula. Phasellus laoreet
+        malesuada diam, nec lobortis lectus pharetra a. Pellentesque
+        mi diam, vulputate ac interdum vitae, dictum sit amet diam.
+        Nunc quam mauris, feugiat in luctus eget, vulputate non nisi.
+        Nullam sit amet mi nec dui feugiat aliquam. Fusce ligula quam,
+        ultrices ut porta a, fringilla id quam. Pellentesque pulvinar
+        ligula id odio bibendum non mollis elit commodo.
+    </p>
+ 
+ 
+    <!--
+        This is our drawing surface. It covers the entire page
+        viewport (see CSS).
+    -->
+    <canvas id="canvas" resize keepalive="true"></canvas>
+ 
+    <!-- This is our precentage complete label. -->
+    <div id="percentLabel">
+        0%
+    </div>
+ 
+ 
+    <!--
+        The Paper.js script runs inside its own script tag. I assume
+        it does this so that it can create GLOBAL variables without
+        actually messing up the global namespace.
+
+        NOTE: I don't know if this is required. I didn't dive too
+        deeply into the documentation. I *assume* you can use Paper.js
+        without this intermediary wrapper.
+    -->
+    <script type="text/paperscript" canvas="canvas">
+ 
+ 
+        // Get a reference to the canvas object.
+        var revealCanvas = $( "#canvas" );
+ 
+        // Get a reference to the perecent label.
+        var percentLabel = $( "#percentLabel" );
+ 
+ 
+        // I return the relevant screen/canvas coordinates needed
+        // to draw the canvas object.
+        function getRevealCoordinates( percentRevealed ){
+ 
+            // Default the percent to zero if not provided.
+            percentRevealed = (percentRevealed || 0);
+ 
+            // Calculate the relevant coordinates.
+            var width = revealCanvas.width();
+            var height = revealCanvas.height();
+            var centerX = Math.floor( width / 2 );
+            var centerY = Math.floor( height / 2 );
+            var complete = Math.max( centerX, centerY );
+            var revealRadius = Math.floor( complete * (percentRevealed / 100) );
+ 
+            // Return the coordinate collection.
+            return({
+                width: width,
+                height: height,
+                centerX: centerX,
+                centerY: centerY,
+                revealRadius: revealRadius
+            });
+ 
+        }
+ 
+ 
+        // Get a reference to the current reveal path. We will
+        // need this so that we can remove it between frame
+        // rendering.
+        var currentReveal = null;
+ 
+ 
+        // I draw the current reveal over the page content.
+        function drawReveal( percentRevealed ){
+ 
+            // Set the fill color.
+            project.currentStyle.fillColor = "black";
+ 
+            // Get the releveant coordinates for drawing the reveal
+            // path on the canvas.
+            var coords = getRevealCoordinates( percentRevealed );
+ 
+            // Create a shape for the "fill". We are going to "punch"
+            // a cicrle out of this to reveal the content below.
+            var screenCover = new Path.Rectangle(
+                0,
+                0,
+                coords.width,
+                coords.height
+            );
+ 
+            // Create our "punch" for the compound path. This
+            // transparency will reveal the content behind the
+            // page overlay.
+            var reveal = new Path.Circle(
+                new Point( coords.centerX, coords.centerY ),
+                coords.revealRadius
+                );
+ 
+            // If there is a current overlay, remove it. Otherwise,
+            // the canvas doesn't know to refresh the transparency.
+            if (currentReveal){
+ 
+                currentReveal.remove();
+ 
+            }
+ 
+            // Create the new compond path. When doing this, the
+            // parts of the paths that overlap will be created as a
+            // transparency (like any vector graphic program).
+            currentReveal = new CompoundPath( screenCover, reveal );
+ 
+            // Update the label.
+            percentLabel.text( percentRevealed + "%" );
+ 
+        }
+ 
+ 
+        // I am the animation hook. I render the canvas.
+        function onFrame(){
+ 
+            // Check to see if our animation is done.
+            if (percent > 100){
+ 
+                // Clear our percent-simulation timer.
+                clearInterval( timer );
+ 
+                // Kill the onFrame() event handler.
+                onFrame = null;
+ 
+                // Remove the canvas and label.
+                revealCanvas.remove();
+                percentLabel.fadeOut();
+ 
+                // Return out.
+                return;
+ 
+            }
+ 
+            // As we near the end of our loading, we want to start
+            // fading out the overlay to provide a smooth and
+            // pleasing transition.
+            if (percent >= 90){
+ 
+                revealCanvas.css(
+                    "opacity",
+                    ((100 - percent) / 10)
+                );
+ 
+            }
+ 
+            // Draw the updated reveal overlay.
+            drawReveal( percent );
+ 
+        }
+ 
+ 
+        // Trigger the first reveal.
+        drawReveal();
+ 
+ 
+        // -------------------------------------------------- //
+        // -------------------------------------------------- //
+ 
+ 
+        // Simulate something loading.
+        var percent = 0;
+ 
+        var timer = setInterval(
+            function(){
+                percent++;
+            },
+            50
+        );
+ 
+ 
+    </script>
+ 
+</body>
+</html>

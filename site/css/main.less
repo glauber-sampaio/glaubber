@@ -1,0 +1,499 @@
+@import "lib.less";
+@import "transform.less";
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+::-moz-selection {
+    background: black;
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: black;
+    color: white;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   GLAUBBER
+   ========================================================================== */
+
+@font-face {
+    font-family: 'din';
+    src: url('fonts/ff_din_bold.eot');
+    src: url('fonts/ff_din_bold.eot') format('embedded-opentype'),
+         url('fonts/ff_din_bold.woff') format('woff'),
+         url('fonts/ff_din_bold.ttf') format('truetype'),
+         url('fonts/ff_din_bold.svg#din') format('svg');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'din';
+    src: url('fonts/ff_din_light.eot');
+    src: url('fonts/ff_din_light.eot') format('embedded-opentype'),
+         url('fonts/ff_din_light.woff') format('woff'),
+         url('fonts/ff_din_light.ttf') format('truetype'),
+         url('fonts/ff_din_light.svg#din') format('svg');
+    font-weight: normal;
+}
+
+
+
+.tungsten() {
+    font-family: 'Tungsten A', 'Tungsten B'; font-weight: 500; font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li { margin: 0; padding: 0; }
+ul, li { list-style-type: none; }
+a { text-decoration: none; }
+
+*, *:after, *:before { .border-box; }
+
+
+body {
+    background: black url(../img/bg.jpg) no-repeat center top;
+}
+
+
+#content {
+    width: 100%;
+    position: relative;
+    font-family: 'din';
+
+    .wrp {
+        width: 1055px;
+        overflow: hidden;
+        margin: 0 auto 60px;
+        position: relative;
+
+        .debut {
+            width: 100%;
+            text-align: center;
+            padding-top: 80px;
+            .font(16, yellow, 6, normal, normal);
+        }
+
+        .big-logo {
+            width: 628px;
+            height: 628px;
+            border: 7px solid white;
+            margin: 60px auto 0;
+
+            h1 {
+                .tungsten;
+                .font(68, white, 40, normal, normal);
+                width: 100%;
+                text-align: center;
+                margin: 50px 0 0 20px;
+            }
+        }
+
+
+        .main-nav {
+            width: auto;
+            display: table;
+            margin: 30px auto 0;
+            position: relative;
+
+            .copy {
+                .font(12, white, 2, normal, bold);
+                width: auto;
+                display: table;
+                position: absolute;
+                top: -92px; left: -68px;
+                #transform > .rotate(-90);
+            }
+            ul {
+                width: auto;
+                display: table;
+                margin: 0 auto;
+
+                li {
+                    width: auto;
+                    display: table;
+                    float: left;
+                    .tungsten;
+                    .font(24, white, 0, normal, normal);
+                    margin-right: 10px;
+
+                    &:last-child { 
+                        margin-right: 0; 
+                        &:after { content: ""; }
+                    }
+
+                    &:after {
+                        content: '/';
+                        .font(24, white, 0, normal, normal);
+                        float: right;
+                        margin-left: 10px;
+                    }
+
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        &:hover { color: yellow; }
+                    }
+                }
+            }
+        }
+
+
+        .albuns {
+            width: 100%;
+            position: absolute;
+            top: 345px; left: 0;
+            .easeoutexpo;
+
+            *{ .easeoutexpo; }
+
+            .album {
+                width: 520px;
+                
+                &.free {
+                    float: left;
+                }
+
+                &.deluxe {
+                    float: right;
+                    .col { 
+                        float: right; 
+                        .label { background: url(../img/arrow-right.png) no-repeat left 108px; }
+                        .label p { text-align: left; }
+                        .info { text-align: left; }
+                    }
+                    .cover { float: left; }
+                }
+
+                .col {
+                    width: 133px;
+                    float: left;
+
+                    .label {
+                        width: 100%;
+                        height: 148px;
+                        background: url(../img/arrow-left.png) no-repeat right 88px;
+                        position: relative;
+
+                        a {
+                            width: 100%; height: 100%;
+                            position: absolute; top: 0; left: 0;
+                        }
+
+                        p {
+                            .font(18, white, 0, normal, bold);
+                            line-height: 18px;
+                            text-align: right;
+
+                            span {
+                                color: yellow;
+                            }
+                        }
+
+                        &:hover {
+                            p { color: yellow; }
+                        }
+
+                    }
+                    .info {
+                        .font(14, white, 0, normal, bold);
+                        text-align: right;
+                        margin-top: 118px;
+                        a {
+                            color: white;
+                            text-decoration: underline;
+                            &:hover {
+                                color: yellow;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+                .cover {
+                    width: 336px;
+                    float: right;
+                    box-shadow: 0px 30px 80px -20px black;
+
+                    img {
+
+                    }
+                }
+
+                &:hover {
+                    &.free {
+                        .col .label { #transform > .translateX(-15); }
+                    }
+                    &.deluxe {
+                        .col .label { #transform > .translateX(15); }
+                    }
+                }
+
+            }
+        }
+
+
+    }
+
+
+    
+    .about {
+        width: 100%;
+        height: 1200px;
+        background: #424345 url(../img/bg-about.jpg) no-repeat center top;
+        position: absolute;
+        top: 0; left: 0;
+        z-index: 7000;
+        .easeoutexpo;
+        opacity: 0;
+
+        * { .easeoutexpo; }
+
+        &.show { top: 0 !important; opacity: 1; }
+
+        .awrp {
+            width: 1055px;
+            overflow: hidden;
+            margin: 0 auto 60px;
+            position: relative;
+
+            .back {
+                width: 66px;
+                text-align: center;
+                .font(16, yellow, 6, normal, normal);
+                cursor: pointer;
+                position: fixed;
+                top: 80px; left: 80px;
+                z-index: 9999;
+                &:hover { color: white; }
+            }
+
+            .logo-wrp {
+                width: 628px;
+                border: 7px solid white;
+                margin: 60px auto 0;
+                padding-bottom: 60px;
+
+                h1 {
+                    .tungsten;
+                    .font(68, white, 40, normal, normal);
+                    width: 100%;
+                    text-align: center;
+                    margin: 50px 0 0 20px;
+                }
+
+                p {
+                    width: 100%;
+                    .font(16, white, 0, normal, normal);
+                    line-height: 22px;
+                    padding: 0 70px;
+                    margin-top: 30px;
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

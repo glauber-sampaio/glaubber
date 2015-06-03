@@ -1,0 +1,24 @@
+body
+{
+    background-color: #fff; 
+    color: #000; 
+    font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+    font-size: 11px; 
+}
+
+canvas 
+{ 
+    position:absolute;
+    top:60px;
+    left:0px;
+    display: block; 
+    outline: 0px; 
+    padding:20px;
+}
+
+#loading
+{
+    padding:20px;
+}
+    
+

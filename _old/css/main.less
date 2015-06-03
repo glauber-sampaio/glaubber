@@ -1,0 +1,400 @@
+@import "lib.less";
+@import "transform.less";
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   GLAUBBER
+   ========================================================================== */
+
+@font-face {
+    font-family: 'din';
+    src: url('fonts/ff_din_bold.eot');
+    src: url('fonts/ff_din_bold.eot') format('embedded-opentype'),
+         url('fonts/ff_din_bold.woff') format('woff'),
+         url('fonts/ff_din_bold.ttf') format('truetype'),
+         url('fonts/ff_din_bold.svg#din') format('svg');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'din';
+    src: url('fonts/ff_din_light.eot');
+    src: url('fonts/ff_din_light.eot') format('embedded-opentype'),
+         url('fonts/ff_din_light.woff') format('woff'),
+         url('fonts/ff_din_light.ttf') format('truetype'),
+         url('fonts/ff_din_light.svg#din') format('svg');
+    font-weight: normal;
+}
+
+
+
+.tungsten() {
+    font-family: 'Tungsten A', 'Tungsten B'; font-weight: 500; font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li { margin: 0; padding: 0; }
+ul, li { list-style-type: none; }
+a { text-decoration: none; }
+
+*, *:after, *:before { .border-box; }
+
+
+body {
+    background: #535352 url(../img/bg-1.jpg) no-repeat center top;
+}
+
+
+#content {
+    width: 100%;
+    font-family: 'din';
+    position: relative;
+    overflow: hidden;
+
+    
+    #box {
+        width: 950px;
+        height: 820px;
+        border: 3px solid white;
+        border-top: none;
+        position: relative;
+        margin: 0 auto;
+
+        .debut {
+            .font(14, yellow, 6, normal, bold);
+            width: 100%;
+            text-align: center;
+            padding-top: 150px;
+        }
+        .title-box {
+            width: auto;
+            display: table;
+            margin: 100px auto 0;
+
+            h2 {
+                .tungsten;
+                .font(70, white, 28, normal, 500);
+                text-align: center;
+                margin-left: 18px;
+            }
+            h4 {
+                width: 100%;
+                .font(19, white, 8, normal, normal);
+                text-align: center;
+                position: relative;
+                
+                &:after {
+                    width: 40px;
+                    height: 1px;
+                    background: darken(white, 50%);
+                    position: absolute;
+                    top: 13px; right: -30px;
+                    content: "";
+                }
+
+                &:before {
+                    width: 40px;
+                    height: 1px;
+                    background: darken(white, 50%);
+                    position: absolute;
+                    top: 13px; left: -30px;
+                    content: "";
+                }
+
+            }
+        }
+        .social {
+            width: auto;
+            display: table;
+            margin: 60px auto;
+
+            li {
+                width: auto;
+                display: table;
+                float: left;
+                margin-right: 40px;
+                position: relative;
+                .easeoutexpo;
+
+                &:last-child { margin-right: 0; }
+                &:hover { opacity: 0.5; }
+
+                a {
+                    width: 100%; height: 100%;
+                    position: absolute; top: 0; left: 0;
+                }
+                img {
+                    margin: 0 auto;
+                }
+            }
+        }
+        .download {
+            width: auto;
+            display: table;
+            margin: 147px auto 0;
+
+            h3 {
+                width: auto;
+                display: table;
+                padding: 18px 25px;
+                text-align: center;
+                border: 3px solid white;
+
+                a {
+                    width: 100%;
+                    .font(14, white, 8, normal, bold);
+                }
+
+                &:hover {
+                    background: white;
+                    a { color: lighten(black, 30%); }
+                }
+
+            }
+            p {
+                width: 100%;
+                .font(14, white, 0, normal, bold);
+                text-align: center;
+                margin-top: 50px;
+            }
+
+        }
+        .copyright {
+            width: auto;
+            display: table;
+            .font(10, white, 4, normal, bold);
+            position: absolute;
+            bottom: 70px; left: -70px;
+            #transform > .rotate(-90);
+        }
+    }
+
+
+
+
+    #listen {
+        width: 950px;
+        margin: 40px auto;
+
+        h3 {
+            .font(18, white, 2, normal, bold);
+            width: 100%;
+            text-align: center;
+        }
+
+        .embed {
+            margin-top: 50px;
+        }
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
