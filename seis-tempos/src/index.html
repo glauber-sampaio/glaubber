@@ -35,7 +35,7 @@ Music, design and codes by glaubersampaio.com :-)
         <meta property='og:locale' content='pt_BR'/>
 
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/main.min.css">
         <script src="js/modernizr.js"></script>
 
     </head>
@@ -102,20 +102,40 @@ Music, design and codes by glaubersampaio.com :-)
             </div>
 
             <div class="share-cover-elements">
+                
                 <div class="logo-black"></div>
                 <div class="close-button">FECHAR</div>
-                <div class="clean-button">TECLE "ESPAÇO"<br/>PARA LIMPAR</div>
-                <div class="share-button">COMPARTILHAR</div>
+                <div class="tip">TECLE "ESC"<br/>PARA LIMPAR</div>
+                <div class="canvas-message--edit">EDITAR<br/>MENSAGEM</div>
+                
+                <div class="fb-login-button">ENTRAR NO<br/>FACEBOOK</div>
+                <div class="fb-post-button">PUBLICAR NO FACEBOOK COMO<br/><span></span></div>
+                
+                <div class="canvas-pic-shoot-fx"></div>
+                <div class="canvas-loading-display"><div class="loading"></div></div>
+                
+                <div class="canvas-message">
+                    <div class="msg-wrp">
+                        <button class="canvas-message--ok">OK</button>
+                        <textarea name="canvas-message--ta" id="canvas-message--ta" placeholder="Digite o texto que será publicado junto com a imagem no Facebook. Você pode usar ao final #SeisTemposEP. Deixe em branco e nenhuma mensagem será publicada."></textarea>
+                    </div>
+                </div>
+                
                 <div class="canvas-wrapper">
                     <canvas id="cover-viewport" width="800px" height="800px"></canvas>
                 </div>
+                
                 <img id="share-cover-bg" src="images/share-cover-bg.jpg" alt="">
+
             </div>
+
+            <div class="privacy-policy-link"><a target="_blank" href="http://glaubbermusic.com/privacy/index.htm">Privacy Policy</a></div>
 
         </div>
 
         <audio id="audio-bg" src="audio/seistempos-6outro-128.mp3" autoplay></audio>
 
+        <script src="js/assets.js"></script>
         <script src="js/main.js"></script>
 
         <script>

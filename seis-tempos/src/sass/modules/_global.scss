@@ -237,8 +237,10 @@ p { cursor: default; }
 		}
 
 		.close-button,
-		.clean-button,
-		.share-button {
+		.tip,
+		.fb-login-button,
+		.fb-post-button,
+		.canvas-message--edit {
 			@extend %widthauto;
 			position: absolute;
 			color: black;
@@ -249,41 +251,170 @@ p { cursor: default; }
 
 		.close-button {
 			top: 50px; right: 50px;
+			text-align: right;
 			&:hover {
 				transform: translate3d(-10px, 0, 0);
 				-webkit-transform: translate3d(-10px, 0, 0);
 			}
 		}
 
-		.share-button {
-			top: 50%; right: 200px;
+		.fb-login-button,
+		.fb-post-button {
+			width: 150px;
+			top: 50%; right: 10%;
+			text-transform: uppercase;
+
 			&:hover {
 				transform: translate3d(-10px, 0, 0);
 				-webkit-transform: translate3d(-10px, 0, 0);
 			}
+
 		}
 
-		.clean-button {
-			top: 50%; left: 200px;
+		.fb-post-button { 
+			display: none;
+			opacity: 0;
+			span {
+				color: darken(white, 40%);
+				opacity: 1 !important;
+				text-transform: uppercase;
+			}
+		}
+
+		.tip {
+			top: 50%; left: 10%;
 			cursor: default;
 		}
 
-		.canvas-wrapper {
+		.canvas-wrapper,
+		.canvas-pic-shoot-fx,
+		.canvas-loading-display,
+		.canvas-message {
 			width: 800px;
 			height: 800px;
 			position: absolute;
 			@include centerObj(800, 800);
+		}
+
+		.canvas-pic-shoot-fx {
+			background: white;
+			z-index: 1;
+			display: none;
+		}
+
+		.canvas-loading-display {
+			background: url(../images/canvas-loading-bg.png);
+			z-index: 1;
+			display: none;
+			
+			.loading {
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				@include centerObj(20, 20);
+				z-index: 5;
+				background: url(../images/350.gif) no-repeat 0 0;
+				opacity: 1 !important;
+			}
+
+		}
+
+		.canvas-message--edit {
+			width: 150px;
+			top: 42%; right: 10%;
+			text-transform: uppercase;
+			display: none;
+
+			&:hover {
+				transform: translate3d(-10px, 0, 0);
+				-webkit-transform: translate3d(-10px, 0, 0);
+			}
+		}
+
+		.canvas-message {
+			background: url(../images/canvas-loading-bg.png);
+			z-index: 1;
+			display: none;
+
+			.msg-wrp {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				opacity: 1 !important;
+
+				.canvas-message--ok {
+					width: 50px;
+					height: 50px;
+					background: transparent;
+					border: none;
+					color: white;
+					font-size: 20px;
+					position: absolute;
+					bottom: 50px; right: 50px;
+					z-index: 2;
+					cursor: pointer;
+					padding-top: 10px;
+					border-radius: 50px;
+					opacity: 1 !important;
+
+					&:hover{
+						background: darken(white, 30%);
+					}
+
+				}
+	
+				textarea {
+					width: 50%;
+					height: 100%;
+					padding: 40px;
+					font-size: 28px;
+					line-height: 38px;
+					color: white;
+					@include inputPlaceholder(darken(white, 30%));
+					background: transparent;
+					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					border: none;
+					outline: none;
+					opacity: 1 !important;
+				}
+
+			}
+
+		}
+
+		.canvas-wrapper {
 			background: black;
 
 			canvas {
 				position: relative;
 				opacity: 1;
+				cursor: url(../images/cursor-marker.png), default;
+				backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
+				-moz-backface-visibility: hidden;
 			}
 
 		}
 
 		#share-cover-bg { display: none; }
 
+	}
+
+	.privacy-policy-link {
+		position: absolute;
+		bottom: 40px; right: -20px;
+		z-index: 9999;
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+
+		a {
+			font-size: 9px;
+			font-weight: normal;
+			text-transform: uppercase;
+			color: black;
+			text-decoration: none;
+		}
 
 	}
 

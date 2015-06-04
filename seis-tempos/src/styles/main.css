@@ -551,8 +551,10 @@ th {
 
 #content .ui nav,
 #content .share-cover-elements .close-button,
-#content .share-cover-elements .clean-button,
-#content .share-cover-elements .share-button {
+#content .share-cover-elements .tip,
+#content .share-cover-elements .fb-login-button,
+#content .share-cover-elements .fb-post-button,
+#content .share-cover-elements .canvas-message--edit {
   width: auto;
   display: table;
 }
@@ -1054,8 +1056,10 @@ p {
 /* line 239, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .close-button,
-#content .share-cover-elements .clean-button,
-#content .share-cover-elements .share-button {
+#content .share-cover-elements .tip,
+#content .share-cover-elements .fb-login-button,
+#content .share-cover-elements .fb-post-button,
+#content .share-cover-elements .canvas-message--edit {
   position: absolute;
   color: black;
   height: 15px;
@@ -1063,14 +1067,15 @@ p {
   z-index: 1;
 }
 
-/* line 250, ../sass/modules/_global.scss */
+/* line 252, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .close-button {
   top: 50px;
   right: 50px;
+  text-align: right;
 }
 
-/* line 252, ../sass/modules/_global.scss */
+/* line 255, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .close-button:hover {
   -ms-transform: translate3d(-10px, 0, 0);
@@ -1078,32 +1083,54 @@ p {
   -webkit-transform: translate3d(-10px, 0, 0);
 }
 
-/* line 258, ../sass/modules/_global.scss */
+/* line 261, ../sass/modules/_global.scss */
 
-#content .share-cover-elements .share-button {
+#content .share-cover-elements .fb-login-button,
+#content .share-cover-elements .fb-post-button {
+  width: 150px;
   top: 50%;
-  right: 200px;
+  right: 10%;
+  text-transform: uppercase;
 }
 
-/* line 260, ../sass/modules/_global.scss */
+/* line 267, ../sass/modules/_global.scss */
 
-#content .share-cover-elements .share-button:hover {
+#content .share-cover-elements .fb-login-button:hover,
+#content .share-cover-elements .fb-post-button:hover {
   -ms-transform: translate3d(-10px, 0, 0);
   transform: translate3d(-10px, 0, 0);
   -webkit-transform: translate3d(-10px, 0, 0);
 }
 
-/* line 266, ../sass/modules/_global.scss */
+/* line 274, ../sass/modules/_global.scss */
 
-#content .share-cover-elements .clean-button {
+#content .share-cover-elements .fb-post-button {
+  display: none;
+  opacity: 0;
+}
+
+/* line 277, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .fb-post-button span {
+  color: #999999;
+  opacity: 1 !important;
+  text-transform: uppercase;
+}
+
+/* line 284, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .tip {
   top: 50%;
-  left: 200px;
+  left: 10%;
   cursor: default;
 }
 
-/* line 271, ../sass/modules/_global.scss */
+/* line 289, ../sass/modules/_global.scss */
 
-#content .share-cover-elements .canvas-wrapper {
+#content .share-cover-elements .canvas-wrapper,
+#content .share-cover-elements .canvas-pic-shoot-fx,
+#content .share-cover-elements .canvas-loading-display,
+#content .share-cover-elements .canvas-message {
   width: 800px;
   height: 800px;
   position: absolute;
@@ -1111,20 +1138,185 @@ p {
   left: 50%;
   margin-top: -400px;
   margin-left: -400px;
+}
+
+/* line 299, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-pic-shoot-fx {
+  background: white;
+  z-index: 1;
+  display: none;
+}
+
+/* line 305, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-loading-display {
+  background: url(../images/canvas-loading-bg.png);
+  z-index: 1;
+  display: none;
+}
+
+/* line 310, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-loading-display .loading {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10px;
+  margin-left: -10px;
+  z-index: 5;
+  background: url(../images/350.gif) no-repeat 0 0;
+  opacity: 1 !important;
+}
+
+/* line 322, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-message--edit {
+  width: 150px;
+  top: 42%;
+  right: 10%;
+  text-transform: uppercase;
+  display: none;
+}
+
+/* line 328, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-message--edit:hover {
+  -ms-transform: translate3d(-10px, 0, 0);
+  transform: translate3d(-10px, 0, 0);
+  -webkit-transform: translate3d(-10px, 0, 0);
+}
+
+/* line 334, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-message {
+  background: url(../images/canvas-loading-bg.png);
+  z-index: 1;
+  display: none;
+}
+
+/* line 339, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  opacity: 1 !important;
+}
+
+/* line 345, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp .canvas-message--ok {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  z-index: 2;
+  cursor: pointer;
+  padding-top: 10px;
+  border-radius: 50px;
+  opacity: 1 !important;
+}
+
+/* line 360, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp .canvas-message--ok:hover {
+  background: #b3b3b3;
+}
+
+/* line 366, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp textarea {
+  width: 50%;
+  height: 100%;
+  padding: 40px;
+  font-size: 28px;
+  line-height: 38px;
+  color: white;
+  background: transparent;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  opacity: 1 !important;
+}
+
+/* line 23, ../sass/base/_mymixins.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp textarea::-webkit-input-placeholder {
+  color: #b3b3b3;
+}
+
+/* line 24, ../sass/base/_mymixins.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: #b3b3b3;
+}
+
+/* line 25, ../sass/base/_mymixins.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #b3b3b3;
+}
+
+/* line 26, ../sass/base/_mymixins.scss */
+
+#content .share-cover-elements .canvas-message .msg-wrp textarea:-ms-input-placeholder {
+  color: #b3b3b3;
+}
+
+/* line 386, ../sass/modules/_global.scss */
+
+#content .share-cover-elements .canvas-wrapper {
   background: black;
 }
 
-/* line 278, ../sass/modules/_global.scss */
+/* line 389, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-wrapper canvas {
   position: relative;
   opacity: 1;
+  cursor: url(../images/cursor-marker.png), default;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* line 285, ../sass/modules/_global.scss */
+/* line 400, ../sass/modules/_global.scss */
 
 #content .share-cover-elements #share-cover-bg {
   display: none;
+}
+
+/* line 404, ../sass/modules/_global.scss */
+
+#content .privacy-policy-link {
+  position: absolute;
+  bottom: 40px;
+  right: -20px;
+  z-index: 9999;
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+
+/* line 411, ../sass/modules/_global.scss */
+
+#content .privacy-policy-link a {
+  font-size: 9px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: black;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=main.css.map */
