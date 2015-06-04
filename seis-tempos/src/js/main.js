@@ -177,6 +177,7 @@ GLAUBBER.prototype = {
 		document.querySelector('.canvas-wrapper').style.transform = 'scale('+ scale +')';
 		document.querySelector('.canvas-pic-shoot-fx').style.transform = 'scale('+ scale +')';
 		document.querySelector('.canvas-loading-display').style.transform = 'scale('+ scale +')';
+		document.querySelector('.canvas-message').style.transform = 'scale('+ scale +')';
 
 	},
 
