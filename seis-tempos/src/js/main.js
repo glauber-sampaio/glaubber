@@ -286,24 +286,27 @@ GLAUBBER.prototype = {
     	FB.getLoginStatus(function (response) {
     		if(response.status === 'connected') {
 
-    			self.FBData.accessToken = response.authResponse.accessToken;
-    			self.FBData.userID = response.authResponse.userID;
-    			showLoggedStatus();
+    			showLoggedStatus(response.authResponse.accessToken);
 
     		}else{
     			
-    			FB.login(function () {
-    				showLoggedStatus();
+    			FB.login(function (response) {
+
+    				showLoggedStatus(response.authResponse.accessToken);
+
     			},{ scope: 'publish_actions'});
 
     		}
     	});
 
-    	function showLoggedStatus() {
+    	function showLoggedStatus(token) {
+    		
+    		self.FBData.accessToken = token;
     		
     		FB.api('/me', function (response) {
     			self.scb_fbPost.querySelector('span').innerHTML = response.name;
     			self.FBData.username = response.name;
+    			self.FBData.userID = response.id;
     		});
 
     		TweenMax.set([self.scb_fbPost, self.scb_messageButton], { opacity: 0, display: 'block' });
