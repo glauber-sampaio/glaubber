@@ -44,6 +44,7 @@ GLAUBBER.prototype = {
 
 		this.introAnimateCoverElements();
 		this.canvasDraw();
+		this.audioEl.play();
 
 		this.soundButton.addEventListener('click', function () {
 			if(classie.has(this, 'paused')) {
