@@ -736,7 +736,7 @@ body {
   position: absolute;
   top: 50px;
   right: 50px;
-  z-index: 500;
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -755,7 +755,7 @@ body {
   bottom: 50px;
   left: 50%;
   margin-left: -20px;
-  z-index: 500;
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -1035,9 +1035,10 @@ body {
   -webkit-perspective: 1000px;
   -ms-perspective: 1000px;
   perspective: 1000px;
+  z-index: 9999;
 }
 
-/* line 237, ../sass/modules/_global.scss */
+/* line 238, ../sass/modules/_global.scss */
 
 #content .share-cover-elements * {
   opacity: 0;
@@ -1049,7 +1050,7 @@ body {
   /* easeOutExpo */
 }
 
-/* line 242, ../sass/modules/_global.scss */
+/* line 243, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .logo-black {
   width: 167px;
@@ -1061,7 +1062,7 @@ body {
   z-index: 1;
 }
 
-/* line 251, ../sass/modules/_global.scss */
+/* line 252, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .close-button,
 #content .share-cover-elements .tip,
@@ -1075,7 +1076,7 @@ body {
   z-index: 1;
 }
 
-/* line 264, ../sass/modules/_global.scss */
+/* line 265, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .close-button {
   top: 50px;
@@ -1083,7 +1084,7 @@ body {
   text-align: right;
 }
 
-/* line 267, ../sass/modules/_global.scss */
+/* line 268, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .close-button:hover {
   -ms-transform: translate3d(-10px, 0, 0);
@@ -1091,7 +1092,7 @@ body {
   -webkit-transform: translate3d(-10px, 0, 0);
 }
 
-/* line 273, ../sass/modules/_global.scss */
+/* line 274, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .fb-login-button,
 #content .share-cover-elements .fb-post-button {
@@ -1101,7 +1102,7 @@ body {
   text-transform: uppercase;
 }
 
-/* line 279, ../sass/modules/_global.scss */
+/* line 280, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .fb-login-button:hover,
 #content .share-cover-elements .fb-post-button:hover {
@@ -1110,14 +1111,14 @@ body {
   -webkit-transform: translate3d(-10px, 0, 0);
 }
 
-/* line 286, ../sass/modules/_global.scss */
+/* line 287, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .fb-post-button {
   display: none;
   opacity: 0;
 }
 
-/* line 289, ../sass/modules/_global.scss */
+/* line 290, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .fb-post-button span {
   color: #999999;
@@ -1125,7 +1126,7 @@ body {
   text-transform: uppercase;
 }
 
-/* line 296, ../sass/modules/_global.scss */
+/* line 297, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .tip {
   top: 50%;
@@ -1133,7 +1134,7 @@ body {
   cursor: default;
 }
 
-/* line 301, ../sass/modules/_global.scss */
+/* line 302, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-wrapper,
 #content .share-cover-elements .canvas-pic-shoot-fx,
@@ -1148,7 +1149,7 @@ body {
   margin-left: -400px;
 }
 
-/* line 311, ../sass/modules/_global.scss */
+/* line 312, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-pic-shoot-fx {
   background: white;
@@ -1156,7 +1157,7 @@ body {
   display: none;
 }
 
-/* line 317, ../sass/modules/_global.scss */
+/* line 318, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-loading-display {
   background: url(../images/canvas-loading-bg.png);
@@ -1164,7 +1165,7 @@ body {
   display: none;
 }
 
-/* line 322, ../sass/modules/_global.scss */
+/* line 323, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-loading-display .loading {
   width: 20px;
@@ -1179,7 +1180,7 @@ body {
   opacity: 1 !important;
 }
 
-/* line 334, ../sass/modules/_global.scss */
+/* line 335, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-message--edit {
   width: 150px;
@@ -1189,7 +1190,7 @@ body {
   display: none;
 }
 
-/* line 340, ../sass/modules/_global.scss */
+/* line 341, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-message--edit:hover {
   -ms-transform: translate3d(-10px, 0, 0);
@@ -1197,7 +1198,7 @@ body {
   -webkit-transform: translate3d(-10px, 0, 0);
 }
 
-/* line 346, ../sass/modules/_global.scss */
+/* line 347, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-message {
   background: url(../images/canvas-loading-bg.png);
@@ -1205,7 +1206,7 @@ body {
   display: none;
 }
 
-/* line 351, ../sass/modules/_global.scss */
+/* line 352, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-message .msg-wrp {
   width: 100%;
@@ -1214,7 +1215,7 @@ body {
   opacity: 1 !important;
 }
 
-/* line 357, ../sass/modules/_global.scss */
+/* line 358, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-message .msg-wrp .canvas-message--ok {
   width: 50px;
@@ -1233,13 +1234,13 @@ body {
   opacity: 1 !important;
 }
 
-/* line 372, ../sass/modules/_global.scss */
+/* line 373, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-message .msg-wrp .canvas-message--ok:hover {
   background: #b3b3b3;
 }
 
-/* line 378, ../sass/modules/_global.scss */
+/* line 379, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-message .msg-wrp textarea {
   width: 50%;
@@ -1282,13 +1283,13 @@ body {
   color: #b3b3b3;
 }
 
-/* line 398, ../sass/modules/_global.scss */
+/* line 399, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-wrapper {
   background: black;
 }
 
-/* line 401, ../sass/modules/_global.scss */
+/* line 402, ../sass/modules/_global.scss */
 
 #content .share-cover-elements .canvas-wrapper canvas {
   position: relative;
@@ -1299,13 +1300,13 @@ body {
   -webkit-backface-visibility: hidden;
 }
 
-/* line 412, ../sass/modules/_global.scss */
+/* line 413, ../sass/modules/_global.scss */
 
 #content .share-cover-elements #share-cover-bg {
   display: none;
 }
 
-/* line 416, ../sass/modules/_global.scss */
+/* line 417, ../sass/modules/_global.scss */
 
 #content .privacy-policy-link {
   position: absolute;
@@ -1317,7 +1318,7 @@ body {
   -webkit-transform: rotate(-90deg);
 }
 
-/* line 423, ../sass/modules/_global.scss */
+/* line 424, ../sass/modules/_global.scss */
 
 #content .privacy-policy-link a {
   font-size: 9px;
@@ -1325,6 +1326,35 @@ body {
   text-transform: uppercase;
   color: black;
   text-decoration: none;
+}
+
+@media screen and (max-width: 1420px) {
+  /* line 439, ../sass/modules/_global.scss */
+
+  #content .share-cover-elements .tip {
+    left: 4%;
+  }
+
+  /* line 440, ../sass/modules/_global.scss */
+
+  #content .share-cover-elements .fb-login-button,
+  #content .share-cover-elements .fb-post-button {
+    right: 2%;
+  }
+}
+
+@media screen and (max-height: 850px) {
+  /* line 446, ../sass/modules/_global.scss */
+
+  #content.sm {
+    height: 150vh;
+  }
+
+  /* line 448, ../sass/modules/_global.scss */
+
+  #content.sm .share-cover-elements {
+    height: 100%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

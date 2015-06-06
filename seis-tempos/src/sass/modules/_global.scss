@@ -23,7 +23,7 @@ body {
 		background: url(../images/icon-sound.png) no-repeat 0 0;
 		position: absolute;
 		top: 50px; right: 50px;
-		z-index: 500;
+		z-index: 2;
 		cursor: pointer;
 
 		&.paused {
@@ -38,7 +38,7 @@ body {
 		position: absolute;
 		bottom: 50px; left: 50%;
 		margin-left: -20px;
-		z-index: 500;
+		z-index: 2;
 		cursor: pointer;
 	}
 
@@ -233,6 +233,7 @@ body {
 		top: 0; left: 0;
 		display: none;
 		perspective: 1000px;
+		z-index: 9999;
 
 		* {
 			opacity: 0;
@@ -430,5 +431,20 @@ body {
 
 	}
 
+
+}
+
+@media screen and (max-width: 1420px) {
+
+	#content .share-cover-elements .tip { left: 4%; }
+	#content .share-cover-elements .fb-login-button, #content .share-cover-elements .fb-post-button { right: 2%; }
+
+}
+
+@media screen and (max-height: 850px) {
+	
+	#content.sm { height: 150vh; }
+
+	#content.sm .share-cover-elements { height: 100%; }
 
 }

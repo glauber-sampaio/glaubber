@@ -24,8 +24,8 @@ GLAUBBER.prototype = {
 		this.epSign = this.lettering.querySelector('.ep-sign'),
 		this.circle = this.coverArtEl.querySelector('.circle');
 
-		var soundButton = this.content.querySelector('.sound-button'),
-			audioEl = document.getElementById('audio-bg');
+		this.soundButton = this.content.querySelector('.sound-button');
+		this.audioEl = document.getElementById('audio-bg');
 		
 		var shareCoverButton = this.ui.querySelector('.share-cover');
 		
@@ -45,13 +45,13 @@ GLAUBBER.prototype = {
 		this.introAnimateCoverElements();
 		this.canvasDraw();
 
-		soundButton.addEventListener('click', function () {
+		this.soundButton.addEventListener('click', function () {
 			if(classie.has(this, 'paused')) {
-				audioEl.play();
+				self.audioEl.play();
 				this.classList.remove('paused');
 				return;
 			}
-			audioEl.pause();
+			self.audioEl.pause();
 			this.classList.add('paused');
 		});
 
@@ -119,7 +119,7 @@ GLAUBBER.prototype = {
 	skipIntro: function () {
 
 		var self = this;
-		
+
 		TweenMax.killTweensOf([
 			this.circle,
 			this.titleSVG.querySelectorAll('path'),
@@ -147,6 +147,7 @@ GLAUBBER.prototype = {
 
         this.ui.style.display = 'block';
         this.coverArtEl.style.display = 'block';
+        this.soundButton.style.display = 'block';
         this.shareCoverElements.style.display = 'none';
 
         TweenMax.set(this.titleSVG.querySelectorAll('path'), { opacity: 1 });
@@ -224,10 +225,10 @@ GLAUBBER.prototype = {
 		var scale = ratio > 1 ? 1 : ratio;
 
 		document.querySelector('.cover-art').style.transform = 'scale('+ scale +')';
-		document.querySelector('.canvas-wrapper').style.transform = 'scale('+ scale +')';
-		document.querySelector('.canvas-pic-shoot-fx').style.transform = 'scale('+ scale +')';
-		document.querySelector('.canvas-loading-display').style.transform = 'scale('+ scale +')';
-		document.querySelector('.canvas-message').style.transform = 'scale('+ scale +')';
+		// document.querySelector('.canvas-wrapper').style.transform = 'scale('+ scale +')';
+		// document.querySelector('.canvas-pic-shoot-fx').style.transform = 'scale('+ scale +')';
+		// document.querySelector('.canvas-loading-display').style.transform = 'scale('+ scale +')';
+		// document.querySelector('.canvas-message').style.transform = 'scale('+ scale +')';
 
 	},
 
@@ -242,6 +243,7 @@ GLAUBBER.prototype = {
 		}
 
 		this.shareCoverElements.style.display = 'block';
+		this.soundButton.style.display = 'none';
 
 		TweenMax.to(this.content, 1, {
 			backgroundColor: '#dedede',
@@ -249,6 +251,7 @@ GLAUBBER.prototype = {
 			onComplete: function () {
 				self.ui.style.display = 'none';
 				self.coverArtEl.style.display = 'none';
+				self.content.classList.add('sm');
 			}
 		});
 
@@ -277,6 +280,7 @@ GLAUBBER.prototype = {
             delay: 1.4,
             onComplete: function () {
                 self.secondAnimateCoverElements();
+                self.content.classList.remove('sm');
             }
         });
 
