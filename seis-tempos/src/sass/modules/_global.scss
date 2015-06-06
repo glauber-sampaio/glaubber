@@ -3,7 +3,6 @@ body {
 }
 
 * { @include unselectable; }
-p { cursor: default; }
 
 #content {
 	width: 100%;
@@ -13,9 +12,35 @@ p { cursor: default; }
 	font-size: 14px;
 	line-height: 15px;
 	overflow: hidden;
+	position: relative;
 
 	a { color: white; }
 	a:hover { color: darken(white, 40%); }
+
+	.sound-button {
+		width: 14px;
+		height: 14px;
+		background: url(../images/icon-sound.png) no-repeat 0 0;
+		position: absolute;
+		top: 50px; right: 50px;
+		z-index: 500;
+		cursor: pointer;
+
+		&.paused {
+			opacity: 0.6;
+		}
+
+	}
+
+	.skip-button {
+		width: 40px;
+		height: 30px;
+		position: absolute;
+		bottom: 50px; left: 50%;
+		margin-left: -20px;
+		z-index: 500;
+		cursor: pointer;
+	}
 
 	.ui {
 		width: 100%;
@@ -140,22 +165,9 @@ p { cursor: default; }
 			}
 		}
 
-		.sound-button {
-			width: 14px;
-			height: 14px;
-			background: url(../images/icon-sound.png) no-repeat 0 0;
-			position: absolute;
-			top: 50px; right: 50px;
-			z-index: 1;
-			cursor: pointer;
-
-			&.paused {
-				opacity: 0.6;
-			}
-
-		}
 
 	}
+	
 
 	.cover-art {
 		width: 100%;

@@ -13,6 +13,7 @@ function GLAUBBER() {
 GLAUBBER.prototype = {
 
 	showingCoverElements: false,
+	skip: false,
 
 	initEvents: function () {
 
@@ -25,8 +26,10 @@ GLAUBBER.prototype = {
 
 		var soundButton = this.content.querySelector('.sound-button'),
 			audioEl = document.getElementById('audio-bg');
-
+		
 		var shareCoverButton = this.ui.querySelector('.share-cover');
+		
+		this.skipButton = document.querySelector('.skip-button');
 
 		this.scb_closeButton = this.shareCoverElements.querySelector('.close-button');
 		this.scb_tip = this.shareCoverElements.querySelector('.tip');
@@ -50,6 +53,10 @@ GLAUBBER.prototype = {
 			}
 			audioEl.pause();
 			this.classList.add('paused');
+		});
+
+		this.skipButton.addEventListener('click', function () {
+			self.skipIntro();
 		});
 
         TweenMax.set(this.shareCoverElements.querySelector('.canvas-wrapper'), {
@@ -82,14 +89,57 @@ GLAUBBER.prototype = {
 
 	introAnimateCoverElements: function () {
 
-		//var self = this;
+		var self = this;
 		TweenMax.set(this.circle, { scale: 0.8 });
-		TweenMax.staggerTo(this.titleSVG.querySelectorAll('path'), 8, { strokeDasharray: 410 }, 0.4);
+		TweenMax.staggerTo(this.titleSVG.querySelectorAll('path'), 8, { 
+			strokeDasharray: 410,
+			onComplete: hideSkipBtn
+		}, 0.4);
 		TweenMax.to(this.epSign, 8, { opacity: 1, delay: 5 });
 		TweenMax.to(this.circle, 8, { opacity: 1, scale: 1, delay: 8 });
 		TweenMax.to(this.ui, 8, { opacity: 1, delay: 10 });
 
+		function hideSkipBtn() {
+			if(!self.skip) {
+				self.skip = true;
+			}
+
+			TweenMax.to(self.skipButton, 1, { 
+				opacity: 0,
+				onComplete: function () {
+					self.skipButton.style.display = 'none';
+				}
+			});
+		}
+
 		this.showingCoverElements = true;
+
+	},
+
+	skipIntro: function () {
+
+		var self = this;
+		
+		TweenMax.killTweensOf([
+			this.circle,
+			this.titleSVG.querySelectorAll('path'),
+			this.epSign,
+			this.ui
+		]);
+
+		TweenMax.set(this.circle, { scale: 0.8 });
+		TweenMax.to(this.titleSVG.querySelectorAll('path'), 2, { strokeDasharray: 410 });
+		TweenMax.to(this.epSign, 2, { opacity: 1 });
+		TweenMax.to(this.circle, 3, { opacity: 1, scale: 1 });
+		TweenMax.to(this.ui, 1, { opacity: 1 });
+
+		TweenMax.to(this.skipButton, 1, { 
+			opacity: 0,
+			onComplete: function () {
+				self.skipButton.style.display = 'none';
+				self.skip = true;
+			}
+		});
 
 	},
 
